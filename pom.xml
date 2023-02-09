@@ -6,7 +6,7 @@
 
     <groupId>art.kafy-nextlevel</groupId>
     <artifactId>common</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.3</version>
 
 
     <properties>
@@ -17,7 +17,7 @@
         <!-- AspectJ -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.source-target.version>1.8</java.source-target.version>
-        <aspectj.version>1.8.8</aspectj.version>
+        <aspectj.version>1.8.10</aspectj.version>
     </properties>
 
     <distributionManagement>
@@ -50,55 +50,48 @@
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
+            <version>1.9.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
             <version>1.8.8</version>
-            <scope>runtime</scope>
         </dependency>
 
     </dependencies>
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.6.0</version>
-                <configuration>
-                    <source>${java.source-target.version}</source>
-                    <target>${java.source-target.version}</target>
-                    <!-- IMPORTANT -->
-                    <useIncrementalCompilation>false</useIncrementalCompilation>
-                </configuration>
-            </plugin>
-            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>aspectj-maven-plugin</artifactId>
-                <version>1.9</version>
-                <configuration>
-                    <!--<showWeaveInfo>true</showWeaveInfo>-->
-                    <source>${java.source-target.version}</source>
-                    <target>${java.source-target.version}</target>
-                    <Xlint>ignore</Xlint>
-                    <complianceLevel>${java.source-target.version}</complianceLevel>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                    <!--<verbose>true</verbose>-->
-                    <!--<warn>constructorName,packageDefaultMethod,deprecation,maskedCatchBlocks,unusedLocals,unusedArguments,unusedImport</warn>-->
-                </configuration>
+                <version>1.14.0</version>
                 <executions>
                     <execution>
-                        <!-- IMPORTANT -->
-                        <phase>process-sources</phase>
                         <goals>
                             <goal>compile</goal>
                             <goal>test-compile</goal>
                         </goals>
                     </execution>
                 </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjtools</artifactId>
-                        <version>${aspectj.version}</version>
-                    </dependency>
-                </dependencies>
+                <configuration>
+
+                    <complianceLevel>1.8</complianceLevel>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <showWeaveInfo>true</showWeaveInfo>
+                    <verbose>true</verbose>
+                    <Xlint>ignore</Xlint>
+                    <encoding>UTF-8 </encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
             </plugin>
 
         </plugins>

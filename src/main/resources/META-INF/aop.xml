@@ -1,0 +1,9 @@
+<aspectj>
+    <aspects>
+        <aspect name="hello.aspects.LogExecuteTimeAspect"/>
+        <aspect name="hello.aspects.testaspect"/>
+        <weaver options="-verbose -showWeaveInfo">
+            <include within="hello.aspects.*"/>
+        </weaver>
+    </aspects>
+</aspectj>

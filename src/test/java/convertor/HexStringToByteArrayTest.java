@@ -1,12 +1,10 @@
 package convertor;
 
-import hello.annotation.LogExecutionTime;
 import hello.convertor.Convertor;
 import org.junit.Test;
 
 import java.util.Random;
 
-import static hello.convertor.Convertor.convertHexStringToByteArray;
 import static hello.convertor.Convertor.hexStringToByteArray;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
